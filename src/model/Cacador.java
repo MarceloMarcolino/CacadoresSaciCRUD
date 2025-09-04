@@ -23,6 +23,22 @@ public class Cacador {
     private String sonho;
     private List<Integer> sacis; // IDs dos Sacis que o caçador possui
     
+    // Atributos básicos do Caçador
+    private int coracao;  // Resistência emocional
+    private int musculo;  // Força física
+    private int cerebro;  // Inteligência
+    private int charme;   // Carisma
+    
+    // Perícias do Caçador
+    private int atencao;  // Capacidade de observação
+    private int tatica;   // Planejamento e estratégia
+    private int arte;     // Criatividade e expressão
+    private int empatia;  // Compreensão emocional
+    private int encrenca; // Capacidade de se meter em confusões
+    private int esportes; // Habilidades físicas
+    private int mandar;   // Liderança
+    private int fingir;   // Dissimulação
+    
     // NOVOS SISTEMAS IMPLEMENTADOS
     private SistemaProgressao progressao; // Sistema completo de progressão
     private SistemaItens itens;           // Sistema de itens (garrafas, tampinhas, etc.)
@@ -41,6 +57,17 @@ public class Cacador {
         this.musculo = 1;
         this.cerebro = 1;
         this.charme = 1;
+        
+        // Inicializar perícias com 0
+        this.atencao = 0;
+        this.tatica = 0;
+        this.arte = 0;
+        this.empatia = 0;
+        this.encrenca = 0;
+        this.esportes = 0;
+        this.mandar = 0;
+        this.fingir = 0;
+        
         this.nivel = 1;
         this.experiencia = 0;
         this.sacis = new ArrayList<>();

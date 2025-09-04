@@ -1,12 +1,12 @@
 package view;
 
-import model.*;
-import service.SaciService;
-import service.CacadorService;
-import service.MovimentoService;
-import service.InventarioService;
 import java.util.List;
 import java.util.Scanner;
+import model.*;
+import service.CacadorService;
+import service.InventarioService;
+import service.MovimentoService;
+import service.SaciService;
 
 /**
  * Classe View para interface com usuário do CRUD de Sacis
@@ -91,13 +91,13 @@ public class SaciView {
         System.out.println("┌──────────────────────────────────────────────────────────┐");
         System.out.println("│                      📋 MENU PRINCIPAL                   │");
         System.out.println("├──────────────────────────────────────────────────────────┤");
-        System.out.println("│  1️⃣  - Gerenciar Sacis                                   │");
-        System.out.println("│  2️⃣  - Gerenciar Caçadores                               │");
-        System.out.println("│  3️⃣  - Gerenciar Movimentos                              │");
-        System.out.println("│  4️⃣  - Gerenciar Inventários                             │");
-        System.out.println("│  5️⃣  - Estatísticas Gerais                               │");
+        System.out.println("│  1  - Gerenciar Sacis                                   │");
+        System.out.println("│  2  - Gerenciar Caçadores                               │");
+        System.out.println("│  3  - Gerenciar Movimentos                              │");
+        System.out.println("│  4  - Gerenciar Inventários                             │");
+        System.out.println("│  5  - Estatísticas Gerais                               │");
         System.out.println("│                                                          │");
-        System.out.println("│  0️⃣  - Sair                                              │");
+        System.out.println("│  0  - Sair                                              │");
         System.out.println("└──────────────────────────────────────────────────────────┘");
         System.out.print("Escolha uma opção: ");
     }
@@ -251,19 +251,6 @@ public class SaciView {
         
         System.out.println("└──────────────────────────────────────────────────────────┘");
     }
-        System.out.println("│  2️⃣  - Buscar Saci por ID                                │");
-        System.out.println("│  3️⃣  - Buscar Saci por Nome                              │");
-        System.out.println("│  4️⃣  - Buscar Sacis por Tipo                             │");
-        System.out.println("│  5️⃣  - Buscar Sacis por Rank                             │");
-        System.out.println("│  6️⃣  - Listar todos os Sacis                             │");
-        System.out.println("│  7️⃣  - Atualizar Saci                                    │");
-        System.out.println("│  8️⃣  - Remover Saci                                      │");
-        System.out.println("│  9️⃣  - Ver Estatísticas                                  │");
-        System.out.println("│  🔟 - Ver Sacis Mais Poderosos                          │");
-        System.out.println("│  0️⃣  - Sair                                              │");
-        System.out.println("└──────────────────────────────────────────────────────────┘");
-        System.out.print("🔸 Escolha uma opção: ");
-    }
 
     /**
      * Lê a opção do usuário com tratamento de erro
@@ -315,8 +302,9 @@ public class SaciView {
             System.out.print("🎯 Foco: ");
             int foco = Integer.parseInt(scanner.nextLine().trim());
             
-            System.out.print("🌟 Habilidade Especial: ");
-            String habilidade = scanner.nextLine().trim();
+            System.out.print("🌟 Habilidade Especial (usando padrão FOTOSSINTESE): ");
+            String habilidadeTexto = scanner.nextLine().trim();
+            HabilidadeSaci habilidade = HabilidadeSaci.FOTOSSINTESE; // Padrão por enquanto
             
             System.out.print("📖 Descrição: ");
             String descricao = scanner.nextLine().trim();
@@ -348,7 +336,7 @@ public class SaciView {
             System.out.println((i + 1) + " - " + tipos[i]);
         }
         
-        System.out.print("🔸 Escolha o tipo (1-" + tipos.length + "): ");
+        System.out.print("> Escolha o tipo (1-" + tipos.length + "): ");
         
         try {
             int escolha = Integer.parseInt(scanner.nextLine().trim());
@@ -375,7 +363,7 @@ public class SaciView {
             System.out.println((i + 1) + " - " + temperamentos[i]);
         }
         
-        System.out.print("🔸 Escolha o temperamento (1-" + temperamentos.length + "): ");
+        System.out.print("> Escolha o temperamento (1-" + temperamentos.length + "): ");
         
         try {
             int escolha = Integer.parseInt(scanner.nextLine().trim());
@@ -402,7 +390,7 @@ public class SaciView {
             System.out.println((i + 1) + " - " + ranks[i]);
         }
         
-        System.out.print("🔸 Escolha o rank (1-" + ranks.length + "): ");
+        System.out.print("> Escolha o rank (1-" + ranks.length + "): ");
         
         try {
             int escolha = Integer.parseInt(scanner.nextLine().trim());
@@ -514,12 +502,12 @@ public class SaciView {
                 saciExistente.setNome(novoNome);
             }
             
-            // Habilidade Especial
-            System.out.print("🌟 Habilidade Especial [" + saciExistente.getHabilidadeEspecial() + "]: ");
-            String novaHabilidade = scanner.nextLine().trim();
-            if (!novaHabilidade.isEmpty()) {
-                saciExistente.setHabilidadeEspecial(novaHabilidade);
-            }
+            // Habilidade Especial (comentado temporariamente - requer seleção de enum)
+            // System.out.print("🌟 Habilidade Especial [" + saciExistente.getHabilidadeEspecial() + "]: ");
+            // String novaHabilidade = scanner.nextLine().trim();
+            // if (!novaHabilidade.isEmpty()) {
+            //     saciExistente.setHabilidadeEspecial(novaHabilidade);
+            // }
             
             // Descrição
             System.out.print("📖 Descrição [" + saciExistente.getDescricao() + "]: ");
@@ -853,5 +841,83 @@ public class SaciView {
         System.out.println("║         Obrigado por usar o Caçadores de Saci!          ║");
         System.out.println("║              Que os Sacis estejam com você! 🌟          ║");
         System.out.println("╚══════════════════════════════════════════════════════════╝");
+    }
+
+    // ========== MÉTODOS TEMPORÁRIOS PARA CORRIGIR COMPILAÇÃO ==========
+    
+    private void criarNovoCacador() {
+        System.out.println("🚧 Funcionalidade em desenvolvimento");
+    }
+    
+    private void buscarCacadorPorId() {
+        System.out.println("🚧 Funcionalidade em desenvolvimento");
+    }
+    
+    private void buscarCacadorPorNome() {
+        System.out.println("🚧 Funcionalidade em desenvolvimento");
+    }
+    
+    private void buscarCacadoresPorClasse() {
+        System.out.println("🚧 Funcionalidade em desenvolvimento");
+    }
+    
+    private void listarTodosCacadores() {
+        System.out.println("🚧 Funcionalidade em desenvolvimento");
+    }
+    
+    private void atualizarCacador() {
+        System.out.println("🚧 Funcionalidade em desenvolvimento");
+    }
+    
+    private void removerCacador() {
+        System.out.println("🚧 Funcionalidade em desenvolvimento");
+    }
+    
+    private void adicionarSaciAoCacador() {
+        System.out.println("🚧 Funcionalidade em desenvolvimento");
+    }
+    
+    private void removerSaciDoCacador() {
+        System.out.println("🚧 Funcionalidade em desenvolvimento");
+    }
+    
+    private void adicionarExperienciaAoCacador() {
+        System.out.println("🚧 Funcionalidade em desenvolvimento");
+    }
+    
+    private void criarNovoMovimento() {
+        System.out.println("🚧 Funcionalidade em desenvolvimento");
+    }
+    
+    private void buscarMovimentoPorId() {
+        System.out.println("🚧 Funcionalidade em desenvolvimento");
+    }
+    
+    private void buscarMovimentoPorNome() {
+        System.out.println("🚧 Funcionalidade em desenvolvimento");
+    }
+    
+    private void buscarMovimentosPorTipo() {
+        System.out.println("🚧 Funcionalidade em desenvolvimento");
+    }
+    
+    private void buscarMovimentosPorCategoria() {
+        System.out.println("🚧 Funcionalidade em desenvolvimento");
+    }
+    
+    private void listarTodosMovimentos() {
+        System.out.println("🚧 Funcionalidade em desenvolvimento");
+    }
+    
+    private void atualizarMovimento() {
+        System.out.println("🚧 Funcionalidade em desenvolvimento");
+    }
+    
+    private void removerMovimento() {
+        System.out.println("🚧 Funcionalidade em desenvolvimento");
+    }
+    
+    private void buscarMovimentosCompativeis() {
+        System.out.println("🚧 Funcionalidade em desenvolvimento");
     }
 }

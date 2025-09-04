@@ -1,10 +1,10 @@
 package service;
 
 import dao.SaciDAO;
-import model.*;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
+import model.*;
 
 /**
  * Classe de Service para Saci
@@ -37,7 +37,7 @@ public class SaciService {
      */
     public Saci criarSaci(String nome, TipoSaci tipo, Temperamento temperamento, Rank rank,
                          int pv, int potencia, int agilidade, int resistencia, int magia, int foco,
-                         String habilidadeEspecial, String descricao) {
+                         HabilidadeSaci habilidadeEspecial, String descricao) {
         
         // Validações de negócio
         String erroValidacao = validarDadosSaci(nome, tipo, temperamento, rank, pv, 
@@ -54,9 +54,20 @@ public class SaciService {
             System.out.println("⚠️ Aviso: Já existe um Saci com nome similar: " + nome);
         }
 
-        // Criar o Saci
-        Saci novoSaci = new Saci(0, nome, tipo, temperamento, rank, pv, potencia, 
-                                agilidade, resistencia, magia, foco, habilidadeEspecial, descricao);
+        // Criar o Saci usando o construtor padrão e configurando os atributos
+        Saci novoSaci = new Saci();
+        novoSaci.setNome(nome);
+        novoSaci.setTipo(tipo);
+        novoSaci.setTemperamento(temperamento);
+        novoSaci.setRank(rank);
+        novoSaci.setPv(pv);
+        novoSaci.setPotencia(potencia);
+        novoSaci.setAgilidade(agilidade);
+        novoSaci.setResistencia(resistencia);
+        novoSaci.setMagia(magia);
+        novoSaci.setFoco(foco);
+        novoSaci.setHabilidadeEspecial(habilidadeEspecial);
+        novoSaci.setDescricao(descricao);
         
         return saciDAO.criar(novoSaci);
     }

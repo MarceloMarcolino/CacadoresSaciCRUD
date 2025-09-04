@@ -1,7 +1,7 @@
 package dao;
 
-import model.*;
 import java.util.*;
+import model.*;
 
 /**
  * DAO (Data Access Object) para operações CRUD de Saci
@@ -194,7 +194,7 @@ public class SaciDAO {
         curupira.setResistencia(16);
         curupira.setMagia(8);
         curupira.setFoco(12);
-        curupira.setHabilidadeEspecial("Protetor da Floresta");
+        curupira.setHabilidadeEspecial(HabilidadeSaci.INTIMIDACAO);
         curupira.setDescricao("Guardian feroz das florestas brasileiras");
         criar(curupira);
 
@@ -206,7 +206,7 @@ public class SaciDAO {
         boto.setResistencia(13);
         boto.setMagia(20);
         boto.setFoco(16);
-        boto.setHabilidadeEspecial("Encantamento Aquático");
+        boto.setHabilidadeEspecial(HabilidadeSaci.ESCUDO_AMIGO);
         boto.setDescricao("Saci encantador dos rios amazônicos");
         criar(boto);
 
@@ -218,7 +218,7 @@ public class SaciDAO {
         caipora.setResistencia(12);
         caipora.setMagia(10);
         caipora.setFoco(11);
-        caipora.setHabilidadeEspecial("Camuflagem Natural");
+        caipora.setHabilidadeEspecial(HabilidadeSaci.FLUTUAR);
         caipora.setDescricao("Protetor silencioso dos animais");
         criar(caipora);
 
